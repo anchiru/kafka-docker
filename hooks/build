@@ -1,0 +1,9 @@
+#!/bin/bash -xe
+
+. ./hooks/envs
+
+docker build \
+  ${KAFKA_VERSION:+--build-arg "KAFKA_VERSION=${KAFKA_VERSION}"} \
+  ${SCALA_VERSION:+--build-arg "SCALA_VERSION=${SCALA_VERSION}"} \
+  -f $DOCKERFILE_PATH \
+  -t $IMAGE_NAME .
